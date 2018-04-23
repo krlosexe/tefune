@@ -1,0 +1,7 @@
+.navbar-default .navbar-nav > li > a.btn-primary{
+	padding: 10px;
+}
+
+.modal{
+	z-index: 10000 !important;
+}
