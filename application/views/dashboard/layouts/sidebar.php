@@ -22,8 +22,8 @@
 
             </button>
 
-            <h1><a class="navbar-brand" href="index.html"><span class="fa fa-area-chart"></span> Glance<span class="dashboard_text">Design dashboard</span></a></h1>
-
+            <h1><a class="navbar-brand" href="<?= base_url()?>dashboard"><img src="<?= base_url()?>assets/home/images/logo.png" width="150" height="40" alt=""></a></h1>
+        
           </div>
 
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
