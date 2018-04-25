@@ -8,10 +8,14 @@ class Solicitar_datos extends CI_Controller {
 		if (!$this->session->userdata("login")) {
 			redirect(base_url());
 		}else{
-			$this->permisos = $this->backend_lib->control();
-			$this->load->model('users_model');
-			$this->load->model('denuncias_model');
-			$this->load->model('solicitudes_model');
+			if (!$this->valid = $this->valid_perfil->valid()) {
+				redirect(base_url()."dashboard");
+			}else{
+				$this->permisos = $this->backend_lib->control();
+				$this->load->model('users_model');
+				$this->load->model('denuncias_model');
+				$this->load->model('solicitudes_model');
+			}
 		}
 	}
 

@@ -1,12 +1,10 @@
 <?php
 
 defined('BASEPATH') OR exit('No direct script access allowed');
-
-
-
 class Denuncias extends CI_Controller {
 
     private $permisos;
+    private $valid;
 
 	public function __construct(){
 
@@ -17,17 +15,15 @@ class Denuncias extends CI_Controller {
 			redirect(base_url());
 
 		}else{
-
-			$this->permisos = $this->backend_lib->control();
-
-			$this->load->model('users_model');
-
-			$this->load->model('provincias_model');
-
-			$this->load->model('denuncias_model');
-
-			$this->load->model('evidencias_model');
-
+			if (!$this->valid = $this->valid_perfil->valid()) {
+				redirect(base_url()."dashboard");
+			}else{
+				$this->permisos = $this->backend_lib->control();
+				$this->load->model('users_model');
+				$this->load->model('provincias_model');
+				$this->load->model('denuncias_model');
+				$this->load->model('evidencias_model');
+			}
 		}
 
 	}
