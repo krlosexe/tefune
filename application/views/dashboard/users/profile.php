@@ -179,24 +179,43 @@
 				<div class="blank-page widget-shadow scroll" >
 					<h3 class="title1">Seguridad</h3>
 					<div class="row">
+
 						<div class="col-md-12">
-							<form action="" class="row forms">
+
+							<form  class="row forms" method="POST">
+
 								<div class="form-group col-md-12">
-									 <label for="email">Correo Electronico</label> 
-									 <input type="email" class="form-control" id="email" name="email" value="<?= $user->email?>">
-								</div>
-								<div class="form-group col-md-12">
-									 <label for="telefono_casa">Telefono Residencial</label> 
-									 <input type="text" class="form-control" id="telefono_casa" name="telefono_casa"  value="<?= $user->telefono?>">
-								</div>
-								<div class="form-group col-md-12">
-									 <label for="phone">Telefono Movil</label> 
-									 <input type="text" class="form-control" id="phone" name="phone"  value="<?= $user->celular?>">
+
+									 <label for="pass">Contraseña Actual</label> 
+
+									 <input type="password" class="form-control" id="pass" name="pass" value="">
+
 								</div>
 
-								<center><button type="button" id="btn-contacto" class="btn btn-primary">Actualizar</button></center>
+								<div class="form-group col-md-12">
+
+									 <label for="pass1">Nueva Contraseña</label> 
+
+									 <input type="password" class="form-control" id="pass1" name="pass1"  value="">
+
+								</div>
+
+								<div class="form-group col-md-12">
+
+									 <label for="pass2">Repita la contraseña</label> 
+
+									 <input type="password" class="form-control" id="pass2" name="pass2"  value="">
+
+								</div>
+
+
+
+								<center><button type="button" id="btn-pass" class="btn btn-primary">Actualizar</button></center>
+
 							</form>
+
 						</div>
+
 					</div>
 				</div>
 			</div>
