@@ -185,11 +185,11 @@
 									 <label for="email">Correo Electronico</label> 
 									 <input type="email" class="form-control" id="email" name="email" value="<?= $user->email?>">
 								</div>
-								<div class="form-group col-md-6">
+								<div class="form-group col-md-12">
 									 <label for="telefono_casa">Telefono Residencial</label> 
 									 <input type="text" class="form-control" id="telefono_casa" name="telefono_casa"  value="<?= $user->telefono?>">
 								</div>
-								<div class="form-group col-md-6">
+								<div class="form-group col-md-12">
 									 <label for="phone">Telefono Movil</label> 
 									 <input type="text" class="form-control" id="phone" name="phone"  value="<?= $user->celular?>">
 								</div>
