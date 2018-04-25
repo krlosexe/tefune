@@ -12,12 +12,25 @@
 					<h3 class="title1">Datos Personales</h3>
 					<div class="row">
 						<div class="col-md-12">
+							<?php if($this->session->flashdata('error')): ?>
+		                         <div class="alert alert-danger alert-dismissible">
+		                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+		                            <?=  $this->session->flashdata('error'); ?>
+		                          </div>
+	                    	<?php endif; ?>
+	                    	<?php if($this->session->flashdata('valid')): ?>
+		                         <div class="alert alert-success alert-dismissible">
+		                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+		                            <?=  $this->session->flashdata('valid'); ?>
+		                          </div>
+		                     <?php endif; ?>
+						</div>
+						<div class="col-md-12">
 							<div class="img-profile">
-								<form action="<?= base_url()?>carga/uploadprofile/5" id="formFotoss" name="formFoto" method="POST" enctype="multipart/form-data"> 
+								<form action="<?= base_url()?>cuenta/users/uploadprofile"  name="formFoto" method="POST" enctype="multipart/form-data"> 
 									<center id="img-profile">
 										<label for="files" id="list">
 											<?php if ($user->fotos == ""): ?>
-
 												<img src="<?= base_url()?>assets/dashboard/images/img-profile.png" width="180" height="180">
 											<?php else: ?>
 												<img src="<?= base_url()?>uploads/<?=$user->fotos?>" width="180" height="180">
@@ -28,7 +41,7 @@
 									<input type="file" id="files" name="files">
 									<center>
 										<br>
-										<button class="btn btn-primary" id="btn-uploads" type="button">Actualizar</button>
+										<button class="btn btn-primary" type="submit">Actualizar</button>
 									</center>
 								</form>
 							</div>
@@ -261,12 +274,9 @@
 
 		<script>
 
-			$('#formFoto').submit(function ( e ) {
-
+			$('#formFotos').submit(function ( e ) {
 				let objData       = {};
-
 				var id_user       = <?= $this->session->userdata("id") ?>;
-
 			    var data = new FormData(this); //Creamos los datos a enviar con el formulario
 
 			    $.ajax({
