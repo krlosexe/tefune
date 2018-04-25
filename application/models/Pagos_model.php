@@ -46,7 +46,11 @@ class Pagos_model extends CI_Model {
 
 		}else if ($tipo == 9) {
 
-			$tabla = "td_creditos_laborales";
+			$tabla = "td_incumplimiento_laborales";
+
+		}else if ($tipo == 10) {
+
+			$tabla = "td_incumplimiento_comerciales";
 
 		}
 
@@ -114,7 +118,11 @@ class Pagos_model extends CI_Model {
 
 		}else if ($tipo == 9) {
 
-			$tabla = "td_creditos_laborales";
+			$tabla = "td_incumplimiento_laborales";
+
+		}else if ($tipo == 10) {
+
+			$tabla = "td_incumplimiento_comerciales";
 
 		}
 

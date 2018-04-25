@@ -95,11 +95,15 @@ class Denuncias_model extends CI_Model {
 
 	{
 
-		return $this->db->insert('td_creditos_laborales', $datos);
+		return $this->db->insert('td_incumplimiento_laborales', $datos);
 
 	}
 
 
+	public function save_incumplimiento_comerciales($datos)
+	{
+		return $this->db->insert('td_incumplimiento_comerciales', $datos);
+	}
 
 	
 
@@ -242,6 +246,13 @@ class Denuncias_model extends CI_Model {
 	{
 		$resultados = $this->db->get('tipo_deudor');
 
+		return $resultados->result();
+	}
+
+
+	public function getipoincumplimiento()
+	{
+		$resultados = $this->db->get('tipo_incumplimiento');
 		return $resultados->result();
 	}
 
@@ -393,8 +404,15 @@ class Denuncias_model extends CI_Model {
 	{
 		$this->db->where('id', $id);
 
-		$resultado = $this->db->get('td_creditos_laborales');
+		$resultado = $this->db->get('td_incumplimiento_laborales');
 
+		return $resultado->row();
+	}
+
+	public function getincumplimiento_comerciales($id)
+	{
+		$this->db->where('id', $id);
+		$resultado = $this->db->get('td_incumplimiento_comerciales');
 		return $resultado->row();
 	}
 

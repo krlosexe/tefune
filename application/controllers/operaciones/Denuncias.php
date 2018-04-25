@@ -2374,7 +2374,7 @@ class Denuncias extends CI_Controller {
 
 
 
-		$denuncias = array('denuncias'       => $this->denuncias_model->getDenuncias("td_creditos_laborales"),			
+		$denuncias = array('denuncias'       => $this->denuncias_model->getDenuncias("td_incumplimiento_laborales"),			
 
 						  'tipo_deudas'      => $this->denuncias_model->getipodeudas(),
 
@@ -2583,6 +2583,212 @@ class Denuncias extends CI_Controller {
 
 
 
+	public function incumplimiento_comerciales()
+	{
+		$control  = $this->permisos;
+		$opciones = array('opciones'   => $control["opciones"]);
+		$permisos = array('permisos'   => $control["permisos"]);
+
+		$id_user = $this->session->userdata("id");
+		$data    = array('user' => $this->users_model->getUser($id_user));
+
+
+
+
+
+		$denuncias = array('denuncias'       => $this->denuncias_model->getDenuncias("td_incumplimiento_comerciales"),			
+
+						  'tipo_deudas'      => $this->denuncias_model->getipodeudas(),
+
+			              'tipo_vehiculo'    => $this->denuncias_model->getipovehiculo(),
+
+			 			  'tipo_motivo'      => $this->denuncias_model->getipotipomotivo(),
+
+	                      'control_permisos' => $permisos);
+
+
+
+		$this->load->view('dashboard/layouts/header');
+
+		$this->load->view('dashboard/layouts/sidebar', $opciones);
+
+		$this->load->view('dashboard/layouts/top_panel', $data);
+
+		$this->load->view('dashboard/denuncias/incumplimiento_comerciales/list', $denuncias);
+
+		$this->load->view('dashboard/layouts/footer');
+
+	}
+
+
+	public function incumplimiento_comerciales_add()
+
+	{
+		$control  = $this->permisos;
+		$opciones = array('opciones'   => $control["opciones"]);
+
+		$id_user = $this->session->userdata("id");
+		$data    = array('user'                => $this->users_model->getUser($id_user),
+						 'tipo_incumplimiento' => $this->denuncias_model->getipoincumplimiento(),
+						 'tipo_deudor'         => $this->denuncias_model->getipodeudor(),
+						 'controlador'         => "incumplimiento_comerciales"
+
+					   	 );
+
+		$this->load->view('dashboard/layouts/header');
+		$this->load->view('dashboard/layouts/sidebar', $opciones);
+		$this->load->view('dashboard/layouts/top_panel', $data);
+		$this->load->view('dashboard/denuncias/incumplimiento_comerciales/add');
+		$this->load->view('dashboard/layouts/footer');
+	}
+
+
+
+	public function store_incumplimiento_comerciales()
+	{
+		$id_tipo_incumplimiento  = $this->input->get("id_tipo_incumplimiento");
+    	$id_tipo_deudor          = $this->input->get("id_tipo_deudor");
+		$motivo_deuda            = $this->input->get("motivo_deuda");
+    	$rut_deudor              = $this->input->get("rut_deudor");
+    	$nombre_deudor           = $this->input->get("nombre_deudor");
+    	$rut_empresa             = $this->input->get("rut_empresa");
+    	$nombre_empresa          = $this->input->get("nombre_empresa");
+    	$rut_representante       = $this->input->get("rut_representante");
+    	$nombre_representante    = $this->input->get("nombre_representante");
+
+
+    	$data = array(
+    		'id_tipo_incumplimiento' => $id_tipo_incumplimiento,
+    		'id_tipo_deudor'         => $id_tipo_deudor,
+			'motivo_deuda'           => $motivo_deuda,
+			'rut_deudor'             => $rut_deudor,
+			'nombre_deudor'          => $nombre_deudor,
+			'rut_empresa'            => $rut_empresa,
+			'nombre_empresa'         => $nombre_empresa,
+			'rut_representante'      => $rut_representante,
+			'nombre_representante'   => $nombre_representante
+		);
+
+
+
+		$this->form_validation->set_data($data);
+
+    	$this->form_validation->set_rules('id_tipo_incumplimiento', 'tipo  incumplimiento', 'required');
+    	$this->form_validation->set_rules('id_tipo_deudor', 'tipo  deudor', 'required');
+    	$this->form_validation->set_rules('motivo_deuda', 'motivo deuda', 'required');
+		$this->form_validation->set_rules('rut_deudor', 'rut deudor', 'required');
+		$this->form_validation->set_rules('nombre_deudor', 'nombre deudor', 'required');
+		$this->form_validation->set_rules('rut_empresa', 'rut empresa', 'required');
+		$this->form_validation->set_rules('nombre_empresa', 'nombre empresa', 'required');
+		$this->form_validation->set_rules('rut_representante', 'rut representante', 'required');
+		$this->form_validation->set_rules('nombre_representante', 'nombre representante', 'required');
+
+
+		if ($this->form_validation->run()){
+
+			$id_user = $this->session->userdata("id");
+
+
+
+			$datos   = array('id_users'               => $id_user,
+							 'id_tipo_incumplimiento' => $id_tipo_incumplimiento,
+							 'id_tipo_deudor'         => $id_tipo_deudor,
+				             'motivo_deuda'           => $motivo_deuda,
+							 'rut_deudor'             => $rut_deudor,
+							 'nombre_deudor'          => $nombre_deudor,
+							 'rut_empresa'            => $rut_empresa, 
+				             'nombre_empresa'         => $nombre_empresa,
+							 'rut_representante'      => $rut_representante,
+							 'nombre_representante'   => $nombre_representante
+
+						);
+
+			if ($this->denuncias_model->save_incumplimiento_comerciales($datos)) {
+
+				$id = $this->denuncias_model->lastID();
+
+        		$errors = array('success'     => true,
+
+        						'id_denuncia' => $id,
+
+	                            'message'     => 'Datos registrados exitosamente');
+
+           		echo  json_encode($errors);
+
+        	}else{
+
+
+
+        		$datos = array('success' => false,
+
+		                       'message' => 'A ocurrudo un error');
+
+			    echo  json_encode($datos);
+
+        	}
+
+		}else{ 
+
+		    $campos = array('id_tipo_incumplimiento'      => form_error("id_tipo_incumplimiento", "<span class='help-block'>","</span>"),
+		    				'id_tipo_deudor'              => form_error("id_tipo_deudor", "<span class='help-block'>","</span>"),
+		    				'motivo_deuda'                => form_error("motivo_deuda", "<span class='help-block'>","</span>"),
+		                    'rut_deudor'                  => form_error("rut_deudor", "<span class='help-block'>","</span>"),
+		                    'nombre_deudor'                => form_error("nombre_deudor", "<span class='help-block'>","</span>"),
+		                    'rut_empresa'                  => form_error("rut_empresa", "<span class='help-block'>","</span>"),
+		                    'nombre_empresa'               => form_error("nombre_empresa", "<span class='help-block'>","</span>"),
+							'rut_representante'            => form_error("rut_representante", "<span class='help-block'>","</span>"),
+							'nombre_representante'         => form_error("nombre_representante", "<span class='help-block'>","</span>"),
+
+		                   );
+
+	    	$datos = array('success' => false,
+
+				           'valid'   => true,
+
+				           'campos'  => $campos,);
+
+			echo  json_encode($datos);
+
+		}
+
+	}
+
+
+	public function incumplimiento_comerciales_view($id)
+
+	{
+
+		$control  = $this->permisos;
+
+		$opciones = array('opciones'   => $control["opciones"]);
+
+
+
+		$id_user = $this->session->userdata("id");
+
+		$data    = array('user'                       => $this->users_model->getUser($id_user),
+						 'tipo_incumplimiento'        => $this->denuncias_model->getipoincumplimiento(),
+						 'tipo_deudor'                => $this->denuncias_model->getipodeudor(),
+			 			 'incumplimiento_comerciales' => $this->denuncias_model->getincumplimiento_comerciales($id),
+						 'controlador'                => "incumplimiento_comerciales"
+
+					   	 );
+
+
+
+		$this->load->view('dashboard/layouts/header');
+
+		$this->load->view('dashboard/layouts/sidebar', $opciones);
+
+		$this->load->view('dashboard/layouts/top_panel', $data);
+
+		$this->load->view('dashboard/denuncias/incumplimiento_comerciales/view');
+
+		$this->load->view('dashboard/layouts/footer');
+
+	}
+
+
 	public function upload($tipo, $id)
 
 	{
@@ -2630,6 +2836,10 @@ class Denuncias extends CI_Controller {
 		}else if ($tipo == 9){
 
 			$controlador = "creditos_laborales";
+
+		}else if ($tipo == 10){
+
+			$controlador = "incumplimiento_comerciales";
 
 		}
 
