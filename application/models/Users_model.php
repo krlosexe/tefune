@@ -14,13 +14,8 @@ class users_model extends CI_Model {
 
 	{
 
-		$this->db->where("loginUsers", $username);
-
+		$this->db->where("(users.loginUsers = '$username' OR users.email = '$username')");
 		$this->db->where("passUsers", $password);
-
-
-
-		
 
 		$resultados = $this->db->get("users");
 

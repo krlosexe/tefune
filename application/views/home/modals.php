@@ -308,7 +308,7 @@
 					<form method="post">
 						<div class="row" style="padding: 14px;">
 							<div class="input-inline col-md-6">
-								<label for="user">Nombre de usuario</label>
+								<label for="user">Nombre de usuario o email</label>
 								<input type="text" id="user" class="form-control" name="user">
 							</div>
 

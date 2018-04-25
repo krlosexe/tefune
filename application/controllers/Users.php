@@ -257,8 +257,6 @@ public function registroUserAdmin()
 
 			$res      = $this->users_model->login($username, sha1($password));
 
-
-
 			if (!$res) {
 
 				$datos = array('success' => false,
