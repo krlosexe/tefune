@@ -476,6 +476,8 @@ public function registroUserAdmin()
 
     	$num_document  = $this->input->get("num_document");
 
+    	$serie         = $this->input->get("serie");
+
     	$date_nac      = $this->input->get("date_nac");
 
 
@@ -483,7 +485,6 @@ public function registroUserAdmin()
 
 
     	$data = array(
-
 			'name1'          => $name1,
 
 			'name2'          => $name2,
@@ -496,8 +497,9 @@ public function registroUserAdmin()
 
 			'num_document'   => $num_document,
 
-		    'date_nac'       => $date_nac
+			'serie'          => $serie,
 
+		    'date_nac'       => $date_nac
 		);
 
 
@@ -516,6 +518,10 @@ public function registroUserAdmin()
 
 		$this->form_validation->set_rules('num_document', 'numero de documento', 'required');
 
+		if ($type_document == 2) {
+			$this->form_validation->set_rules('serie', 'serie', 'required');
+		}
+
 		$this->form_validation->set_rules('date_nac', 'fecha de nacimiento', 'required');
 
 
@@ -533,6 +539,8 @@ public function registroUserAdmin()
 			$datos   = array('id_identidad' => $type_document,
 
 							 'identidad'    => $num_document, 
+
+							 'serie'        => $serie, 
 
 				             'p_nombre'     => $name1,
 
@@ -577,6 +585,8 @@ public function registroUserAdmin()
 		                    'type_document' => form_error("type_document", "<span class='help-block'>","</span>"),
 
 		                	'num_document'  => form_error("num_document", "<span class='help-block'>","</span>"),
+
+		                	'serie'         => form_error("serie", "<span class='help-block'>","</span>"),
 
 		                    'date_nac'      => form_error("date_nac", "<span class='help-block'>","</span>"));
 
