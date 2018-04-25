@@ -63,9 +63,25 @@
 
 						  <td>
 						  	<?php if ($value->estatus ==0): ?>
-						  		<span class="label label-danger">proceso de aprobación</span>
+
+						  		<span class="label label-danger">Validar pago</span>
+
 						  	<?php else: ?>
-						  		<span class="label label-success">Activo</span>
+
+								<?php if ($value->estatus ==2): ?>
+
+									<span class="label label-warning">proceso de aprobación</span>
+
+								<?php else: ?>
+
+									<?php if ($value->estatus == 1): ?>
+
+									<span class="label label-success">publicado</span>
+
+								<?php endif ?>
+
+								<?php endif ?>
+
 						  	<?php endif ?>
 						  </td>
 
@@ -74,11 +90,27 @@
 
 						  	 	<?php if ($control_permisos["permisos"]->update == 1): ?>
 
-						  	 		<a href="<?= base_url()?>operaciones/denuncias/arriendo_equipos_view/<?= $value->id?>" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Detalles"> <i class="fa fa-eye"></i></a>
+						  	 		<a href="<?= base_url()?>operaciones/denuncias/creditos_automotrices_view/<?= $value->id?>" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Detalles"> <i class="fa fa-eye"></i></a>
 
 
 
-							  		<a href="<?= base_url()?>operaciones/denuncias/upload/7/<?= $value->id?>" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Cargar Evidencias"> <i class="fa fa-upload"></i></a>
+							  		<a href="<?= base_url()?>operaciones/denuncias/upload/8/<?= $value->id?>" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Cargar Evidencias"> <i class="fa fa-upload"></i></a>
+
+							  		<?php if (($this->session->userdata("rol") == 3) AND $value->estatus == 0): ?>
+
+										<a href="<?= base_url()?>operaciones/pagos/index/8/" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="" data-original-title="Pagar"> <i class="fa  fa-check"></i></a>
+
+										<a href="<?= base_url()?>operaciones/pagos/add/8/<?= $value->id?>" class="btn bg-system light" data-toggle="tooltip" data-placement="top" title="" data-original-title="Validar pago"> <i class="fa fa-credit-card"></i></a>
+
+									<?php endif ?>
+
+
+
+									<?php if ((($this->session->userdata("rol") == 2) || ($this->session->userdata("rol") == 4)) AND $value->estatus == 2): ?>
+
+										<a href="<?= base_url()?>operaciones/pagos/view/8/<?= $value->id?>" class="btn bg-system light" data-toggle="tooltip" data-placement="top" title="" data-original-title="Ver pago"> <i class="fa fa-credit-card"></i></a>
+
+									<?php endif ?>
 
 						  	 	<?php endif ?>
 
@@ -103,8 +135,5 @@
 
 
 <script>$(function () {
-
   $('[data-toggle="tooltip"]').tooltip()
-
 })</script>
-

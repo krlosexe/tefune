@@ -2,55 +2,28 @@
 		<div id="page-wrapper">
 			<div class="main-page">
 				<div class="blank-page widget-shadow scroll" id="style-2 div1">
-					<h3 class="title1">Registrar Denuncia por creditos Automotrices</h3>
+					<h3 class="title1">Registrar denuncia por creditos laborales</h3>
 					<div class="row">
 						<div class="col-md-12">
 							<form class="forms">
 								<div class="form-group col-md-6">
-								 	<label for="id_tipo_dedua">Tipo Deuda</label> 
-									 <select name="id_tipo_dedua" id="id_tipo_dedua" class="form-control">
+								 	<label for="id_tipo_laborales">Tipo Laboral</label> 
+									 <select name="id_tipo_laborales" id="id_tipo_laborales" class="form-control">
 									 	<option value="">Seleccione..</option>
-									 	<?php foreach ($tipo_deudas as  $value): ?>
+									 	<?php foreach ($tipo_laborales as  $value): ?>
 									 		<option value="<?= $value->id?>"><?= $value->descripcion?></option>
 									 	<?php endforeach ?>
 									 </select>
 								</div>
 
 								<div class="form-group col-md-6">
-								 	<label for="id_tipo_vehiculo">Tipo vehiculo</label> 
-									 <select name="id_tipo_vehiculo" id="id_tipo_vehiculo" class="form-control">
+								 	<label for="id_tipo_deudor">Tipo deudor</label> 
+									 <select name="id_tipo_deudor" id="id_tipo_deudor" class="form-control">
 									 	<option value="">Seleccione..</option>
-									 	<?php foreach ($tipo_vehiculo as  $value): ?>
+									 	<?php foreach ($tipo_deudor as  $value): ?>
 									 		<option value="<?= $value->id?>"><?= $value->descripcion?></option>
 									 	<?php endforeach ?>
 									 </select>
-								</div>
-								<div class="form-group col-md-6">
-									 <label for="marca">Marca</label> 
-									 <input type="text" class="form-control" id="marca" name="marca" >
-								</div>
-
-								<div class="form-group col-md-6">
-									 <label for="ano">Año</label> 
-									 <input type="number" class="form-control" id="ano" name="ano" >
-								</div>
-
-								<div class="form-group col-md-6">
-
-									 <label for="patente">Patente</label> 
-
-									 <input type="text" class="form-control" id="patente" name="patente" >
-
-								</div>
-
-								<div class="form-group col-md-12">
-									 <label for="caracteristicas">Caracteristicas</label> 
-									 <input type="text" class="form-control" id="caracteristicas" name="caracteristicas" >
-								</div>
-
-								<div class="form-group col-md-6">
-									 <label for="monto_deuda">Monto deuda</label> 
-									 <input type="number" class="form-control" id="monto_deuda" name="monto_deuda" >
 								</div>
 
 								<div class="form-group col-md-6">
@@ -68,6 +41,48 @@
 									 <input type="text" class="form-control" id="nombre_deudor" name="nombre_deudor" >
 
 								</div>
+
+								<div class="form-group col-md-6">
+
+									 <label for="rut_empresa">Rut de la empresa</label> 
+
+									 <input type="text" class="form-control" id="rut_empresa" name="rut_empresa" >
+
+								</div>
+
+
+
+								
+
+								<div class="form-group col-md-6">
+
+									 <label for="nombre_empresa">Nombre de la empresa</label> 
+
+									 <input type="text" class="form-control" id="nombre_empresa" name="nombre_empresa">
+
+								</div>
+
+
+
+								<div class="form-group col-md-6">
+
+									 <label for="rut_representante">Rut del representante</label> 
+
+									 <input type="text" class="form-control" id="rut_representante" name="rut_representante">
+
+								</div>
+
+
+
+								<div class="form-group col-md-6">
+
+									 <label for="nombre_representante">Nombre del representante</label> 
+
+									 <input type="text" class="form-control" id="nombre_representante" name="nombre_representante">
+
+								</div>
+								
+								
 								<div class="form-group col-md-12">
 									<a href="<?= base_url()?>operaciones/denuncias/<?= $controlador?>" class="btn btn-danger pull-left">Volver</a>
 									<a id="btn-save" class="btn btn-primary pull-right">Guardar</a>
@@ -87,22 +102,21 @@
 		<script>
 			$("#btn-save").on("click", function(){
 				var datos = {
-					"id_tipo_dedua"    : $("#id_tipo_dedua").val(),
-					"id_tipo_vehiculo" : $("#id_tipo_vehiculo").val(),
-					"marca"            : $("#marca").val(),
-					"ano"              : $("#ano").val(),
-					"patente"          : $("#patente").val(),
-					"caracteristicas"  : $("#caracteristicas").val(),
-					"monto_deuda"      : $("#monto_deuda").val(),
-					"rut_deudor"       : $("#rut_deudor").val(),
-					"nombre_deudor"    : $("#nombre_deudor").val()
-					
+					"id_tipo_laborales"    : $("#id_tipo_laborales").val(),
+					"id_tipo_deudor"       : $("#id_tipo_deudor").val(),
+					"rut_deudor"           : $("#rut_deudor").val(),
+					"nombre_deudor"        : $("#nombre_deudor").val(),
+					"rut_empresa"          : $("#rut_empresa").val(),
+					"nombre_empresa"       : $("#nombre_empresa").val(),
+					"rut_representante"    : $("#rut_representante").val(),
+					"nombre_representante" : $("#nombre_representante").val(),
+
 				}
 				$.ajax({
 					type    : "GET",
 					dataType: "json",
 					data    : datos,
-					url     : "<?= base_url()?>operaciones/denuncias/store_creditos_automotrices",
+					url     : "<?= base_url()?>operaciones/denuncias/store_creditos_laborales",
 					beforeSend: function () {
 				       $('#btn-save').text(' Enviando...').attr('disabled', 'disabled').prepend('<i class="fa fa-spinner fa-spin"></i>');
 				    },
@@ -115,7 +129,7 @@
 			          var id_denuncia = jqXHR.responseJSON.id_denuncia;
 			          toastr.success(jqXHR.responseJSON.message);
 				        setTimeout(function(){
-						     location.href="<?= base_url()?>operaciones/denuncias/upload/8/"+id_denuncia;
+						     location.href="<?= base_url()?>operaciones/denuncias/upload/9/"+id_denuncia;
 						}, 3000);
 			        }else{
 			           if(jqXHR.responseJSON.valid == true){
