@@ -12,122 +12,118 @@
 
 						<div class="col-md-12">
 
-							<form class="forms">
+							<div class="form-group col-md-12">
 
-								<div class="form-group col-md-12">
+								<br>
 
-									<br>
+								<?php if ($tipo == 1): ?>
 
-									<?php if ($tipo == 1): ?>
+									 <form name="btnPago" method="post" action="https://webpay3g.transbank.cl/filtroUnificado/buttonService">
+										<input type="hidden" name="buttonId" value="1025f73adcfe7d14a7c833ef988f721a"/>
+										<input type="image" src="https://www.transbank.cl/public/img/botonwebpay.gif"/>
+									</form>
 
-										 <form name="btnPago" method="post" action="https://webpay3g.transbank.cl/filtroUnificado/buttonService">
-											<input type="hidden" name="buttonId" value="1025f73adcfe7d14a7c833ef988f721a"/>
-											<input type="image" src="https://www.transbank.cl/public/img/botonwebpay.gif"/>
-										</form>
+								<?php endif ?>
 
-									<?php endif ?>
+								<?php if ($tipo == 2): ?>
 
-									<?php if ($tipo == 2): ?>
+									 <form name="btnPago" method="post" action="https://webpay3g.transbank.cl/filtroUnificado/buttonService">
+										<input type="hidden" name="buttonId" value="1025f73adcfe7d14a7c833ef988f721a"/>
+										<input type="image" src="https://www.transbank.cl/public/img/botonwebpay.gif"/>
+									</form>
 
-										 <form name="btnPago" method="post" action="https://webpay3g.transbank.cl/filtroUnificado/buttonService">
-											<input type="hidden" name="buttonId" value="1025f73adcfe7d14a7c833ef988f721a"/>
-											<input type="image" src="https://www.transbank.cl/public/img/botonwebpay.gif"/>
-										</form>
+								<?php endif ?>
 
-									<?php endif ?>
+								<?php if ($tipo == 3): ?>
 
-									<?php if ($tipo == 3): ?>
+									 <form name="btnPago" method="post" action="https://webpay3g.transbank.cl/filtroUnificado/buttonService">
+										<input type="hidden" name="buttonId" value="1025f73adcfe7d14a7c833ef988f721a"/>
+										<input type="image" src="https://www.transbank.cl/public/img/botonwebpay.gif"/>
+									</form>
 
-										 <form name="btnPago" method="post" action="https://webpay3g.transbank.cl/filtroUnificado/buttonService">
-											<input type="hidden" name="buttonId" value="1025f73adcfe7d14a7c833ef988f721a"/>
-											<input type="image" src="https://www.transbank.cl/public/img/botonwebpay.gif"/>
-										</form>
+								<?php endif ?>
 
-									<?php endif ?>
+								<?php if ($tipo == 4): ?>
 
-									<?php if ($tipo == 4): ?>
+									 <form name="btnPago" method="post" action="https://webpay3g.transbank.cl/filtroUnificado/buttonService">
+										<input type="hidden" name="buttonId" value="1025f73adcfe7d14a7c833ef988f721a"/>
+										<input type="image" src="https://www.transbank.cl/public/img/botonwebpay.gif"/>
+									</form>
 
-										 <form name="btnPago" method="post" action="https://webpay3g.transbank.cl/filtroUnificado/buttonService">
-											<input type="hidden" name="buttonId" value="1025f73adcfe7d14a7c833ef988f721a"/>
-											<input type="image" src="https://www.transbank.cl/public/img/botonwebpay.gif"/>
-										</form>
-
-									<?php endif ?>
+								<?php endif ?>
 
 
 
-									<?php if ($tipo == 5): ?>
+								<?php if ($tipo == 5): ?>
 
-										 <form name="btnPago" method="post" action="https://webpay3g.transbank.cl/filtroUnificado/buttonService">
-											<input type="hidden" name="buttonId" value="1025f73adcfe7d14a7c833ef988f721a"/>
-											<input type="image" src="https://www.transbank.cl/public/img/botonwebpay.gif"/>
-										</form>
+									 <form name="btnPago" method="post" action="https://webpay3g.transbank.cl/filtroUnificado/buttonService">
+										<input type="hidden" name="buttonId" value="1025f73adcfe7d14a7c833ef988f721a"/>
+										<input type="image" src="https://www.transbank.cl/public/img/botonwebpay.gif"/>
+									</form>
 
-									<?php endif ?>
-
-
-
-									<?php if ($tipo == 6): ?>
-
-										 <form name="btnPago" method="post" action="https://webpay3g.transbank.cl/filtroUnificado/buttonService">
-											<input type="hidden" name="buttonId" value="1025f73adcfe7d14a7c833ef988f721a"/>
-											<input type="image" src="https://www.transbank.cl/public/img/botonwebpay.gif"/>
-										</form>
-
-									<?php endif ?>
+								<?php endif ?>
 
 
 
-									<?php if ($tipo == 7): ?>
+								<?php if ($tipo == 6): ?>
 
-										 <form name="btnPago" method="post" action="https://webpay3g.transbank.cl/filtroUnificado/buttonService">
-											<input type="hidden" name="buttonId" value="1025f73adcfe7d14a7c833ef988f721a"/>
-											<input type="image" src="https://www.transbank.cl/public/img/botonwebpay.gif"/>
-										</form>
+									 <form name="btnPago" method="post" action="https://webpay3g.transbank.cl/filtroUnificado/buttonService">
+										<input type="hidden" name="buttonId" value="1025f73adcfe7d14a7c833ef988f721a"/>
+										<input type="image" src="https://www.transbank.cl/public/img/botonwebpay.gif"/>
+									</form>
 
-									<?php endif ?>
-
-									<?php if ($tipo == 8): ?>
-
-										 <form name="btnPago" method="post" action="https://webpay3g.transbank.cl/filtroUnificado/buttonService">
-											<input type="hidden" name="buttonId" value="1025f73adcfe7d14a7c833ef988f721a"/>
-											<input type="image" src="https://www.transbank.cl/public/img/botonwebpay.gif"/>
-										</form>
-
-									<?php endif ?>
+								<?php endif ?>
 
 
-									<?php if ($tipo == 9): ?>
 
-										 <form name="btnPago" method="post" action="https://webpay3g.transbank.cl/filtroUnificado/buttonService">
-											<input type="hidden" name="buttonId" value="1025f73adcfe7d14a7c833ef988f721a"/>
-											<input type="image" src="https://www.transbank.cl/public/img/botonwebpay.gif"/>
-										</form>
+								<?php if ($tipo == 7): ?>
 
-									<?php endif ?>
+									 <form name="btnPago" method="post" action="https://webpay3g.transbank.cl/filtroUnificado/buttonService">
+										<input type="hidden" name="buttonId" value="1025f73adcfe7d14a7c833ef988f721a"/>
+										<input type="image" src="https://www.transbank.cl/public/img/botonwebpay.gif"/>
+									</form>
 
-									<?php if ($tipo == 10): ?>
+								<?php endif ?>
 
-										 <form name="btnPago" method="post" action="https://webpay3g.transbank.cl/filtroUnificado/buttonService">
-											<input type="hidden" name="buttonId" value="1025f73adcfe7d14a7c833ef988f721a"/>
-											<input type="image" src="https://www.transbank.cl/public/img/botonwebpay.gif"/>
-										</form>
+								<?php if ($tipo == 8): ?>
 
-									<?php endif ?>
+									 <form name="btnPago" method="post" action="https://webpay3g.transbank.cl/filtroUnificado/buttonService">
+										<input type="hidden" name="buttonId" value="1025f73adcfe7d14a7c833ef988f721a"/>
+										<input type="image" src="https://www.transbank.cl/public/img/botonwebpay.gif"/>
+									</form>
 
-									
+								<?php endif ?>
 
-								</div>
+
+								<?php if ($tipo == 9): ?>
+
+									 <form name="btnPago" method="post" action="https://webpay3g.transbank.cl/filtroUnificado/buttonService">
+										<input type="hidden" name="buttonId" value="1025f73adcfe7d14a7c833ef988f721a"/>
+										<input type="image" src="https://www.transbank.cl/public/img/botonwebpay.gif"/>
+									</form>
+
+								<?php endif ?>
+
+								<?php if ($tipo == 10): ?>
+
+									 <form name="btnPago" method="post" action="https://webpay3g.transbank.cl/filtroUnificado/buttonService">
+										<input type="hidden" name="buttonId" value="1025f73adcfe7d14a7c833ef988f721a"/>
+										<input type="image" src="https://www.transbank.cl/public/img/botonwebpay.gif"/>
+									</form>
+
+								<?php endif ?>
 
 								
 
-								<div class="form-group col-md-12">
+							</div>
 
-									<!-- <a id="btn-save" class="btn btn-primary pull-right">Guardar</a> -->
+							
 
-								</div>
+							<div class="form-group col-md-12">
 
-							</form>
+								<!-- <a id="btn-save" class="btn btn-primary pull-right">Guardar</a> -->
+
+							</div>
 
 						</div>
 
