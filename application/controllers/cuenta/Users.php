@@ -385,6 +385,44 @@ public function registroUserAdmin()
 	}	
 
 
+	public function pass()
+
+	{	
+		$control  = $this->permisos;
+		$opciones = array('opciones'   => $control["opciones"]);
+
+		$id_user = $this->session->userdata("id");
+
+		if (!$this->session->userdata("login")) {
+
+			redirect(base_url());
+
+		}
+
+		$data = array('user'           => $this->users_model->getUser($id_user),
+
+	                  'type_documents' => $this->users_model->typeDucument(),
+
+	                  'provincias'     => $this->provincias_model->getProvincias(),
+
+	                  'comunas'        => $this->provincias_model->getComunas());
+
+		
+
+		$this->load->view('dashboard/layouts/header');
+
+		$this->load->view('dashboard/layouts/sidebar', $opciones);
+
+		$this->load->view('dashboard/layouts/top_panel', $data);
+
+		$this->load->view('dashboard/users/pass', $data);
+
+		$this->load->view('dashboard/layouts/footer');
+
+	}	
+
+
+
 
 
 

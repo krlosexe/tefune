@@ -69,8 +69,14 @@
 
 								</div>
 								<div class="form-group col-md-12">
+									 <div class="checkbox"> 
+									 	<label> <input type="checkbox" id="aceptar"> Acepto los <a target="_banck" href="<?= base_url()?>terminos/terminos-y-condiciones.pdf">Terminos y condiciones</a> </label> 
+									 </div>
+								</div>
+
+								<div class="form-group col-md-12">
 									<a href="<?= base_url()?>operaciones/denuncias/<?= $controlador?>" class="btn btn-danger pull-left">Volver</a>
-									<a id="btn-save" class="btn btn-primary pull-right">Guardar</a>
+									<a id="btn-save" class="btn btn-primary pull-right" disabled >Guardar</a>
 								</div>
 							</form>
 							
@@ -85,6 +91,16 @@
 
 		
 		<script>
+			var act = 0;
+			$("#aceptar").on("change", function(){
+				if (act == 0) {
+					$("#btn-save").removeAttr("disabled");
+					act = 1;
+				}else if (act == 1) {
+					$("#btn-save").attr("disabled", "disabled");
+					act = 0;
+				}
+			});
 			$("#btn-save").on("click", function(){
 				var datos = {
 					"id_tipo_dedua"    : $("#id_tipo_dedua").val(),

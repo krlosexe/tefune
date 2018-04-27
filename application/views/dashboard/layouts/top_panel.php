@@ -86,6 +86,7 @@
 							<ul class="dropdown-menu drp-mnu">
 
 								<li> <a href="<?= base_url()?>cuenta/users/profile"><i class="fa fa-suitcase"></i> Perfil</a> </li> 
+								<li> <a href="<?= base_url()?>cuenta/users/pass"><i class="fa fa-lock"></i> Cambiar Contraseña</a> </li> 
 
 								<li> <a href="<?= base_url()?>users/logouts"><i class="fa fa-sign-out"></i> Cerrar Sesion</a> </li>
 
