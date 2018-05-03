@@ -80,7 +80,10 @@
 
                       <li><a href="<?= base_url()?>operaciones/denuncias/creditos_laborales"><i class="fa fa-angle-right"></i> Por incumplimiento Laborales</a></li>
 
-                       <li><a href="<?= base_url()?>operaciones/denuncias/incumplimiento_comerciales"><i class="fa fa-angle-right"></i>Por incumplimiento comerciales</a></li>
+                      <li><a href="<?= base_url()?>operaciones/denuncias/incumplimiento_comerciales"><i class="fa fa-angle-right"></i>Por incumplimiento comerciales</a></li>
+
+
+                      <li><a href="<?= base_url()?>operaciones/denuncias/estafadores"><i class="fa fa-angle-right"></i>Por estafadores</a></li>
 
                       
 

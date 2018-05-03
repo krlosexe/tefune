@@ -113,7 +113,14 @@
 
 								<?php endif ?>
 
-								
+								<?php if ($tipo == 11): ?>
+
+									 <form name="btnPago" method="post" action="https://webpay3g.transbank.cl/filtroUnificado/buttonService">
+										<input type="hidden" name="buttonId" value="1025f73adcfe7d14a7c833ef988f721a"/>
+										<input type="image" src="https://www.transbank.cl/public/img/botonwebpay.gif"/>
+									</form>
+
+								<?php endif ?>
 
 							</div>
 

@@ -52,6 +52,10 @@ class Pagos_model extends CI_Model {
 
 			$tabla = "td_incumplimiento_comerciales";
 
+		}else if ($tipo == 11) {
+
+			$tabla = "td_estafadores";
+
 		}
 
 		$this->db->where('id', $id);
@@ -123,6 +127,10 @@ class Pagos_model extends CI_Model {
 		}else if ($tipo == 10) {
 
 			$tabla = "td_incumplimiento_comerciales";
+
+		}else if ($tipo == 11) {
+
+			$tabla = "td_estafadores";
 
 		}
 

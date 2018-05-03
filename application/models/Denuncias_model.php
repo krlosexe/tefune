@@ -105,6 +105,11 @@ class Denuncias_model extends CI_Model {
 		return $this->db->insert('td_incumplimiento_comerciales', $datos);
 	}
 
+	public function save_estafadores($datos)
+	{
+		return $this->db->insert('td_estafadores', $datos);
+	}
+
 	
 
 
@@ -413,6 +418,14 @@ class Denuncias_model extends CI_Model {
 	{
 		$this->db->where('id', $id);
 		$resultado = $this->db->get('td_incumplimiento_comerciales');
+		return $resultado->row();
+	}
+
+
+	public function getestafadores($id)
+	{
+		$this->db->where('id', $id);
+		$resultado = $this->db->get('td_estafadores');
 		return $resultado->row();
 	}
 

@@ -2784,6 +2784,151 @@ class Denuncias extends CI_Controller {
 
 	}
 
+	public function estafadores()
+	{
+		$control  = $this->permisos;
+		$opciones = array('opciones'   => $control["opciones"]);
+		$permisos = array('permisos'   => $control["permisos"]);
+
+		$id_user = $this->session->userdata("id");
+		$data    = array('user' => $this->users_model->getUser($id_user));
+
+
+
+
+
+		$denuncias = array('denuncias'       => $this->denuncias_model->getDenuncias("td_estafadores"),			
+
+	                      'control_permisos' => $permisos);
+
+
+
+		$this->load->view('dashboard/layouts/header');
+
+		$this->load->view('dashboard/layouts/sidebar', $opciones);
+
+		$this->load->view('dashboard/layouts/top_panel', $data);
+
+		$this->load->view('dashboard/denuncias/estafadores/list', $denuncias);
+
+		$this->load->view('dashboard/layouts/footer');
+
+	}
+
+	public function estafadores_add()
+
+	{
+		$control  = $this->permisos;
+		$opciones = array('opciones'   => $control["opciones"]);
+
+		$id_user = $this->session->userdata("id");
+		$data    = array('user'                => $this->users_model->getUser($id_user),
+						 'controlador'         => "estafadores"
+
+					   	 );
+
+		$this->load->view('dashboard/layouts/header');
+		$this->load->view('dashboard/layouts/sidebar', $opciones);
+		$this->load->view('dashboard/layouts/top_panel', $data);
+		$this->load->view('dashboard/denuncias/estafadores/add');
+		$this->load->view('dashboard/layouts/footer');
+	}
+
+
+	public function store_estafadores()
+	{
+		$nombre_estafador  = $this->input->get("nombre_estafador");
+    	$monto_estafa      = $this->input->get("monto_estafa");
+		$descripcion       = $this->input->get("descripcion");
+
+
+    	$data = array(
+    		'nombre_estafador' => $nombre_estafador,
+    		'monto_estafa'     => $monto_estafa,
+			'descripcion'      => $descripcion
+		);
+
+
+
+		$this->form_validation->set_data($data);
+
+    	$this->form_validation->set_rules('nombre_estafador', 'nombre estafadoro', 'required');
+    	$this->form_validation->set_rules('monto_estafa', 'monto estafa', 'required');
+    	$this->form_validation->set_rules('descripcion', 'descripcion', 'required');
+
+
+
+		if ($this->form_validation->run()){
+
+			$id_user = $this->session->userdata("id");
+
+
+
+			$datos   = array('id_users'            => $id_user,
+							 'nombre_estafador'    => $nombre_estafador,
+							 'monto_estafa'        => $monto_estafa,
+				             'descripcion_estafa'  => $descripcion,
+
+						);
+
+			if ($this->denuncias_model->save_estafadores($datos)) {
+
+				$id = $this->denuncias_model->lastID();
+
+        		$errors = array('success'     => true,
+        						'id_denuncia' => $id,
+	                            'message'     => 'Datos registrados exitosamente');
+           		echo  json_encode($errors);
+
+        	}else{
+
+
+        		$datos = array('success' => false,
+		                       'message' => 'A ocurrudo un error');
+			    echo  json_encode($datos);
+
+        	}
+
+		}else{ 
+
+		    $campos = array('nombre_estafador'  => form_error("nombre_estafador", "<span class='help-block'>","</span>"),
+		    				'monto_estafa'      => form_error("monto_estafa", "<span class='help-block'>","</span>"),
+		    				'descripcion'       => form_error("descripcion", "<span class='help-block'>","</span>")
+
+		                   );
+
+	    	$datos = array('success' => false,
+
+				           'valid'   => true,
+
+				           'campos'  => $campos,);
+
+			echo  json_encode($datos);
+
+		}
+
+	}
+
+
+	public function estafadores_view($id)
+
+	{
+		$control  = $this->permisos;
+		$opciones = array('opciones'   => $control["opciones"]);
+
+		$id_user = $this->session->userdata("id");
+		$data    = array('user'        => $this->users_model->getUser($id_user),
+						 'controlador' => "estafadores",
+						 'estafadores' => $this->denuncias_model->getestafadores($id),
+
+					   	 );
+
+		$this->load->view('dashboard/layouts/header');
+		$this->load->view('dashboard/layouts/sidebar', $opciones);
+		$this->load->view('dashboard/layouts/top_panel', $data);
+		$this->load->view('dashboard/denuncias/estafadores/view');
+		$this->load->view('dashboard/layouts/footer');
+	}
 
 	public function upload($tipo, $id)
 
@@ -2836,6 +2981,10 @@ class Denuncias extends CI_Controller {
 		}else if ($tipo == 10){
 
 			$controlador = "incumplimiento_comerciales";
+
+		}else if ($tipo == 11){
+
+			$controlador = "estafadores";
 
 		}
 
